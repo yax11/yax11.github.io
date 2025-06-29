@@ -3,80 +3,413 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Yakubu Haruna | Flutter & Node.js Developer</title>
+  <title>Yakubu Haruna | Software & Web Developer</title>
   <style>
-    body { font-family: Arial, sans-serif; margin: 0; padding: 40px; background-color: #f4f6f8; color: #333; }
-    .container { max-width: 900px; margin: auto; background: white; padding: 30px; box-shadow: 0 0 10px rgba(0,0,0,0.05); border-radius: 8px; }
-    h1, h2, h3 { color: #0b3d91; }
-    ul { line-height: 1.6; }
-    a { color: #0b3d91; text-decoration: none; }
-    .section { margin-bottom: 40px; }
-    .tech-stack span { display: inline-block; margin: 5px 10px 5px 0; padding: 5px 10px; background: #e7efff; border-radius: 5px; }
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f4f6f8;
+      color: #222;
+    }
+    .resume-container {
+      display: flex;
+      max-width: 1100px;
+      margin: 40px auto;
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 4px 24px rgba(11,61,145,0.08);
+      overflow: hidden;
+    }
+    .sidebar {
+      background: #23235b;
+      color: #fff;
+      width: 320px;
+      padding: 36px 28px 36px 28px;
+      display: flex;
+      flex-direction: column;
+      gap: 36px;
+    }
+    .sidebar h2 {
+      font-size: 1.1rem;
+      margin-bottom: 10px;
+      color: #b3c6f7;
+      letter-spacing: 1px;
+      border-bottom: 1.5px solid #b3c6f7;
+      padding-bottom: 4px;
+    }
+    .sidebar a, .sidebar .contact-info {
+      color: #e7efff;
+      font-size: 0.98rem;
+      text-decoration: none;
+      word-break: break-all;
+    }
+    .sidebar ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .sidebar li {
+      margin-bottom: 8px;
+      font-size: 0.98rem;
+    }
+    .sidebar .tech span, .sidebar .skills span {
+      display: inline-block;
+      background: #b3c6f7;
+      color: #23235b;
+      border-radius: 4px;
+      padding: 3px 10px;
+      margin: 3px 4px 3px 0;
+      font-size: 0.93rem;
+    }
+    .sidebar .tech.tech-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 6px 8px;
+    }
+    .main-content {
+      flex: 1;
+      padding: 44px 48px 44px 48px;
+      background: #fff;
+    }
+    .main-content h1 {
+      font-size: 2.1rem;
+      color: #0b3d91;
+      margin-bottom: 0.2em;
+      letter-spacing: 1px;
+    }
+    .main-content h3 {
+      color: #23235b;
+      margin-top: 32px;
+      margin-bottom: 10px;
+      font-size: 1.15rem;
+      letter-spacing: 0.5px;
+      background: #e7efff;
+      padding: 6px 12px;
+      border-radius: 5px;
+      display: inline-block;
+    }
+    .main-content section {
+      margin-bottom: 28px;
+    }
+    .main-content ul {
+      margin: 0 0 0 18px;
+      padding: 0;
+      line-height: 1.7;
+    }
+    .main-content li {
+      margin-bottom: 7px;
+    }
+    .summary {
+      font-size: 1.08rem;
+      margin-bottom: 18px;
+      color: #333;
+    }
+    .job-title {
+      font-weight: bold;
+      color: #0b3d91;
+    }
+    .job-company {
+      color: #23235b;
+      font-weight: 500;
+    }
+    .job-date {
+      color: #888;
+      font-size: 0.97rem;
+      margin-left: 6px;
+    }
+    .edu-degree {
+      font-weight: bold;
+      color: #0b3d91;
+    }
+    .edu-school {
+      color: #23235b;
+      font-weight: 500;
+    }
+    .edu-date {
+      color: #888;
+      font-size: 0.97rem;
+      margin-left: 6px;
+    }
+    @media (max-width: 900px) {
+      .resume-container { flex-direction: column; }
+      .sidebar { width: 100%; border-radius: 10px 10px 0 0; }
+      .main-content { padding: 32px 18px; }
+    }
+    @media (max-width: 700px) {
+      .resume-container { flex-direction: column-reverse; }
+      .sidebar {
+        width: 100%;
+        border-radius: 0;
+        padding: 24px 10px 18px 10px;
+        gap: 22px;
+      }
+      .main-content {
+        padding: 18px 6px;
+      }
+      .main-content h1 {
+        font-size: 1.3rem;
+      }
+      .main-content h3 {
+        font-size: 1rem;
+        padding: 4px 8px;
+      }
+      .sidebar h2 {
+        font-size: 1rem;
+        padding-bottom: 2px;
+      }
+      .sidebar .tech.tech-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 6px 6px;
+      }
+      .sidebar .tech span {
+        font-size: 0.97rem;
+        padding: 6px 0;
+        margin: 2px 4px 2px 0;
+        border-radius: 16px;
+        background: #e7efff;
+        color: #23235b;
+        text-align: center;
+        width: 100%;
+      }
+    }
+    @media (max-width: 420px) {
+      .sidebar .tech.tech-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 4px 4px;
+      }
+      .sidebar .tech span {
+        font-size: 0.93rem;
+        padding: 5px 0;
+        margin: 2px 2px 2px 0;
+        border-radius: 16px;
+        background: #e7efff;
+        color: #23235b;
+        width: 100%;
+      }
+    }
+    .contact-info {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 1rem;
+      margin-bottom: 2px;
+      word-break: break-all;
+    }
+    .contact-icon {
+      font-size: 1.2em;
+      min-width: 1.5em;
+      text-align: center;
+    }
+    @media (max-width: 700px) {
+      .contact-info {
+        background: #e7efff;
+        border-radius: 10px;
+        padding: 12px 10px;
+        gap: 12px;
+        margin-bottom: 12px;
+      }
+      .contact-item {
+        font-size: 1.07rem;
+        padding: 2px 0;
+      }
+      .contact-icon {
+        font-size: 1.25em;
+      }
+    }
+    .contact-text {
+      display: inline;
+      color: #e7efff;
+      margin-left: 6px;
+      word-break: break-all;
+      text-decoration: none;
+      transition: text-decoration 0.2s;
+    }
+    .contact-text:hover, .contact-text:focus {
+      text-decoration: underline;
+    }
+    @media (max-width: 700px) {
+      .contact-text {
+        display: inline-block !important;
+        position: static !important;
+        color: #222 !important;
+        text-decoration: none !important;
+        font-weight: 600 !important;
+      }
+    }
+    .projects-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+    .project-card {
+      background: #e7efff;
+      border-radius: 12px;
+      padding: 18px 20px 14px 20px;
+      box-shadow: 0 2px 8px rgba(11,61,145,0.06);
+      border: 1px solid #d0e2ff;
+      transition: box-shadow 0.2s, border 0.2s;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .project-card:hover {
+      box-shadow: 0 4px 16px rgba(11,61,145,0.13);
+      border: 1.5px solid #b3c6f7;
+    }
+    .project-title {
+      font-size: 1.13rem;
+      font-weight: 700;
+      color: #0b3d91;
+      margin-bottom: 2px;
+      text-decoration: none;
+      display: inline-block;
+    }
+    .project-title:hover, .project-title:focus {
+      text-decoration: underline;
+      color: #23235b;
+    }
+    .project-type {
+      font-size: 0.98rem;
+      color: #23235b;
+      font-weight: 500;
+      margin-bottom: 2px;
+    }
+    .project-desc {
+      font-size: 0.99rem;
+      color: #333;
+      margin-bottom: 2px;
+    }
+    .project-link {
+      font-size: 0.97rem;
+      color: #0b3d91;
+      text-decoration: none;
+      font-weight: 500;
+      margin-top: 2px;
+      display: inline-block;
+    }
+    .project-link:hover, .project-link:focus {
+      text-decoration: underline;
+      color: #23235b;
+    }
+    @media (max-width: 700px) {
+      .projects-list {
+        gap: 14px;
+      }
+      .project-card {
+        padding: 14px 8px 10px 12px;
+        border-radius: 10px;
+      }
+      .project-title {
+        font-size: 1.04rem;
+      }
+    }
   </style>
 </head>
 <body>
-  <div class="container">
-    <h1>Yakubu Haruna — Mobile App & Backend Developer</h1>
-    <p><strong>Location:</strong> Abuja, Nigeria<br>
-    <strong>Email:</strong> yakubuharun11@gmail.com<br>
-    <strong>Phone:</strong> +234-814-300-2447<br>
-    <strong>GitHub:</strong> <a href="https://github.com/yax11">github.com/yax11</a><br>
-    <strong>LinkedIn:</strong> <a href="https://linkedin.com/in/yax101">linkedin.com/in/yax101</a></p>
-
-    <div class="section">
-      <h2>👋 About Me</h2>
-      <p>Highly skilled software developer with experience in mobile and backend systems. Passionate about building efficient, scalable, and human-centered apps using Flutter and Node.js. Proficient in multiple programming languages, with strong problem-solving skills and fast learning ability. Currently seeking freelance and product opportunities that align with innovation and impact.</p>
-    </div>
-
-    <div class="section">
-      <h2>🛠️ Tech Stack</h2>
-      <div class="tech-stack">
-        <span>Flutter</span><span>Dart</span><span>Node.js</span><span>Express.js</span>
-        <span>Firebase</span><span>MongoDB</span><span>MySQL</span><span>Python</span>
-        <span>PHP</span><span>JavaScript</span><span>React</span><span>Linux OS</span>
-        <span>CSS</span><span>WordPress</span><span>Firebase Auth</span><span>Google TTS</span>
+  <div class="resume-container">
+    <aside class="sidebar">
+      <div>
+        <h2>CONTACT</h2>
+        <div class="contact-info">
+          <div class="contact-item"><span class="contact-icon">📞</span><a class="contact-text" href="tel:+2348143002447">+234-81 4300 2447</a></div>
+          <div class="contact-item"><span class="contact-icon">✉️</span><a class="contact-text" href="mailto:yakubuharun11@gmail.com">yakubuharun11@gmail.com</a></div>
+          <div class="contact-item"><span class="contact-icon">🌐</span><a class="contact-text" href="https://github.com/yax11" target="_blank" rel="noopener">Yax11</a></div>
+          <div class="contact-item"><span class="contact-icon">📍</span><a class="contact-text" href="https://www.google.com/maps/search/?api=1&query=Abuja%2C+Nigeria" target="_blank" rel="noopener">Abuja, Nigeria</a></div>
+        </div>
       </div>
-    </div>
-
-    <div class="section">
-      <h2>🚀 Selected Projects</h2>
-      <ul>
-        <li><strong>Ride-Hailing App</strong> – Modular Flutter UI, real-time maps, Firebase Auth</li>
-        <li><strong>Electoral Info App</strong> – Voter alert system for Cameroonian NGO using Firebase & push notifications</li>
-        <li><strong>Academic Voice Notification System</strong> – Google TTS API + FCM audio push + secure backend</li>
-        <li><strong>Ecommerce API</strong> – Multi-vendor order system with secure JWT and admin roles</li>
-      </ul>
-    </div>
-
-    <div class="section">
-      <h2>💼 Work Experience</h2>
-      <ul>
-        <li><strong>IT Officer</strong> (Remote) – Mettle-Paragon International Ltd (2024 – Present)</li>
-        <li><strong>Web Developer</strong> (Remote) – Multivisions and Pixels (2020 – Present)</li>
-      </ul>
-    </div>
-
-    <div class="section">
-      <h2>🎓 Education</h2>
-      <ul>
-        <li><strong>BSc. Computer Science</strong> – Nasarawa State University, Keffi (2020–2024)</li>
-        <li><strong>HND Survey & Geo-informatics</strong> – Federal Polytechnic Nasarawa (2016–2018)</li>
-      </ul>
-    </div>
-
-    <div class="section">
-      <h2>🎯 Skills & Languages</h2>
-      <ul>
-        <li>Languages: English, Hausa</li>
-        <li>Soft Skills: Communication, critical thinking, teamwork, organization, integrity</li>
-        <li>Interests: Coding, tech research</li>
-      </ul>
-    </div>
-
-    <div class="section">
-      <h2>📬 Let’s Work</h2>
-      <p>I’m open to freelance, contract, and MVP development projects — especially in Nigeria, Africa, or globally. Reach out, and let’s build something impactful.</p>
-    </div>
+      <div>
+        <h2>TECHNICAL SKILLS</h2>
+        <div class="tech tech-grid">
+          <span>Flutter/Dart</span><span>JavaScript</span>
+          <span>WordPress</span><span>Node.js</span>
+          <span>Python</span><span>CSS</span>
+          <span>Linux OS</span><span>MySQL</span>
+          <span>MongoDB</span><span>React</span>
+        </div>
+      </div>
+      <div>
+        <h2>KEY SKILLS</h2>
+        <ul>
+          <li>Interpersonal skills</li>
+          <li>Communication skills</li>
+          <li>Critical thinking</li>
+          <li>Integrity</li>
+          <li>Organization</li>
+          <li>Teamwork</li>
+        </ul>
+      </div>
+      <div>
+        <h2>ADDITIONAL INFO</h2>
+        <ul>
+          <li>Languages: English, Hausa</li>
+          <li>Interest: Coding/Tech research</li>
+        </ul>
+      </div>
+      <div>
+        <h2>REFEREES</h2>
+        <div>Silas Simon - 07030219652<br>MEBDOS Technologies</div>
+      </div>
+    </aside>
+    <main class="main-content">
+      <h1>Yakubu Haruna</h1>
+      <div class="summary">
+        Highly skilled software developer with experience in developing and maintaining desktop and mobile systems. Proficient in multiple programming languages, including Python, Dart/Flutter, PHP, SQL, and JavaScript. Strong problem-solving skills and ability to learn quickly. Seeking a software development role in a dynamic and innovative company. Committed to utilizing my skills to achieve the mission of a company.
+      </div>
+      <section>
+        <h3>EDUCATION</h3>
+        <ul>
+          <li><span class="edu-degree">BSc. Computer Science</span> <span class="edu-school">Nasarawa State University, Keffi</span> <span class="edu-date">2020–2024</span></li>
+          <li><span class="edu-degree">HND Survey & Geo-informatics</span> <span class="edu-school">Federal Polytechnic Nasarawa</span> <span class="edu-date">2016–2018</span></li>
+        </ul>
+      </section>
+      <section>
+        <h3>EMPLOYMENT</h3>
+        <ul>
+          <li><span class="job-title">IT Officer</span> <span class="job-company">Mettle-Paragon International Ltd</span> <span class="job-date">2024 – Present (Remote)</span></li>
+          <li><span class="job-title">Web Developer</span> <span class="job-company">Multivisions and Pixels</span> <span class="job-date">2020 – Present (Remote)</span></li>
+        </ul>
+      </section>
+      <section>
+        <h3>INTERNSHIP</h3>
+        <ul>
+          <li>Justice Watch, Nigeria (2020)</li>
+          <li>Cheth Consult, Nigerian Ltd. (2017)</li>
+        </ul>
+      </section>
+      <section>
+        <h3>PROJECTS</h3>
+        <ul class="projects-list">
+          <li class="project-card">
+            <a href="https://votecam.org/" target="_blank" rel="noopener" class="project-title">VoteCam</a>
+            <span class="project-type">Mobile App</span>
+            <span class="project-desc">Civic engagement app for Cameroon: voter registration, election updates, and notifications.</span>
+            <a href="https://votecam.org/" target="_blank" rel="noopener" class="project-link">Visit Website</a>
+          </li>
+          <li class="project-card">
+            <a href="https://mettleparagon.ng/" target="_blank" rel="noopener" class="project-title">MettleParagon</a>
+            <span class="project-type">Mobile App</span>
+            <span class="project-desc">Business and productivity mobile app for Mettle-Paragon International Ltd.</span>
+            <a href="https://mettleparagon.ng/" target="_blank" rel="noopener" class="project-link">Visit Website</a>
+          </li>
+          <li class="project-card">
+            <a href="https://cataitracka.com/index.php" target="_blank" rel="noopener" class="project-title">CATAI Project Management Tool</a>
+            <span class="project-type">Web PMT</span>
+            <span class="project-desc">Project management tool for tracking and collaboration.</span>
+            <a href="https://cataitracka.com/index.php" target="_blank" rel="noopener" class="project-link">Visit Website</a>
+          </li>
+        </ul>
+      </section>
+    </main>
   </div>
 </body>
 </html>
